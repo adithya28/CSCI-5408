@@ -1,0 +1,4 @@
+import pandas
+file = pandas.read_csv('<<csv_file_name>>')
+file['<<columns>>'] = file['<<columns>>'].fillna("columns")
+file.to_csv('<<filename.csv>>')
