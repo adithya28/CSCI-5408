@@ -1,4 +1,4 @@
-package org.example;
+package org.example.A3;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class NewsTransformation {
         String[] topics = {"Canada", "Halifax", "hockey", "hurricane", "electricity", "house", "inflation"};
         for (String topic : topics) {
             database.createCollection(topic);
-            try (FileInputStream fis = new FileInputStream("D:\\CSCI 5408\\A3\\Assignment3\\src\\main\\java\\org\\example\\articles\\" + topic + ".txt")) {
+            try (FileInputStream fis = new FileInputStream("D:\\CSCI 5408\\A3\\Assignment3\\src\\main\\java\\org\\example\\A3\\articles" + topic + ".txt")) {
                 JsonFactory jf = new JsonFactory();
                 JsonParser jp = jf.createParser(fis);
                 jp.setCodec(new ObjectMapper());
@@ -50,6 +50,7 @@ public class NewsTransformation {
         String pass3 = pass2.replaceAll("\\\\u(\\p{XDigit}{4})", "");
         //remove html code
         pass3 = pass3.replaceAll("<.*?>", "");
+        pass3 =  pass3.replaceAll("[\tr\tn]", " ");
         return pass3;
     }
 }
